@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const mongodb = require("mongodb");
 const { MongoClient, ServerApiVersion } = require("mongodb");
+const { ObjectId } = require("mongodb");
 
 require("dotenv").config();
 
@@ -46,6 +47,7 @@ async function run() {
       try {
         const productId = req.params.id;
         const comment = req.body.comment;
+        console.log(productId, comment);
         const result = await productsCollection.updateOne(
           { _id: mongodb.ObjectId(productId) },
           { $push: { comments: comment } }

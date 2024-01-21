@@ -1,8 +1,8 @@
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
-import { SignupForm } from '../components/SignUpForm';
 import { Link } from 'react-router-dom';
 import logo from '../assets/images/technet-logo-white.png';
+import SignUpForm from '@/components/SignUpForm';
 
 export default function Signup() {
   return (
@@ -26,7 +26,9 @@ export default function Signup() {
             }}
           />
           <div className="relative z-20 flex items-center text-lg font-medium">
+            <Link to="/">
             <img className="h-8" src={logo} alt="" />
+            </Link>
           </div>
           <div className="relative z-20 mt-auto">
             <blockquote className="space-y-2"></blockquote>
@@ -42,7 +44,7 @@ export default function Signup() {
                 Enter your email below to create your account
               </p>
             </div>
-            <SignupForm />
+            <SignUpForm />
             <p className="px-8 text-center text-sm text-muted-foreground">
               By clicking continue, you agree to our{' '}
               <Link
