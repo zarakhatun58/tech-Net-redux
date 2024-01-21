@@ -13,27 +13,17 @@ import { IProduct } from '@/types/globalTypes';
 import { useEffect, useState } from 'react';
 
 export default function Products() {
-  //  const [data, setData] = useState<IProduct[]>([]);
+  // const [data, setData] = useState<IProduct[]>([]);
+
+  const { data, isLoading, error } = useGetProductsQuery(undefined);
   // useEffect(() => {
   //   fetch('http://localhost:5000/products')
   //     .then((res) => res.json())
-  //     .then((data) => setData(data));
+  //     .then((data) => console.log(data));
   // }, []);
-  //setData(data)
-
-  const { data, isLoading, error } = useGetProductsQuery(undefined);
-  console.log(data);
+  console.log(data, 'data');
   console.log(error);
 
-  //   fetch('http://localhost:5000/', {
-  //     method:'POST',
-  //     headers:{
-  //       'content-type':'application/json'
-  //     },
-  //     body:JSON.stringify(data)
-  //   }).then()
-  //   event.preventDefault();
-  // }
   const { toast } = useToast();
 
   const { priceRange, status } = useAppSelector((state) => state.product);
@@ -88,7 +78,7 @@ export default function Products() {
       </div>
       <div className="col-span-9 grid grid-cols-3 gap-10 pb-20">
         {productsData?.map((product: IProduct) => (
-          <ProductCard product={product} />
+          <ProductCard key={product._id} product={product} />
         ))}
       </div>
     </div>
